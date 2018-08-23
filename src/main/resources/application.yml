@@ -3,7 +3,8 @@ spring:
     name: goods
   ########## datasource config ====================
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/quartz?useUnicode=true&characterEncoding=utf8&useSSL=false
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 180236
     driver-class-name: com.mysql.jdbc.Driver
@@ -53,11 +54,11 @@ spring:
   ########## redis config ====================
   redis:
     # redis访问地址
-    host: 127.0.0.1
+    host: 123.56.6.129
     # redis访问端口
     port: 6379
     # redis访问密码
-    password:
+    password: 180236
     # redis使用数据库（0-15）
     database: 0
   ########## quartz config ====================
@@ -84,7 +85,7 @@ spring:
       # 线程池实现类
       org.quartz.threadPool.class: org.quartz.simpl.SimpleThreadPool
       # 执行最大并发线程数量
-      org.quartz.threadPool.threadCount: 25
+      org.quartz.threadPool.threadCount: 5
       # 线程优先级
       org.quartz.threadPool.threadPriority: 5
       org.quartz.dataSource.mysql.connectionProvider.class: com.jundemon.service.quartz.config.QuartzDruidConnectionProvider
