@@ -88,18 +88,6 @@ spring:
       org.quartz.threadPool.threadCount: 5
       # 线程优先级
       org.quartz.threadPool.threadPriority: 5
-      org.quartz.dataSource.mysql.connectionProvider.class: com.jundemon.service.quartz.config.QuartzDruidConnectionProvider
-      # quartz 数据库连接驱动
-      org.quartz.dataSource.mysql.driver: com.mysql.jdbc.Driver
-      # quartz 数据库连接url
-      org.quartz.dataSource.mysql.URL: jdbc:mysql://127.0.0.1:3306/quartz?useUnicode=true&characterEncoding=utf8&useSSL=false
-      # quartz 连接的数据库的用户名
-      org.quartz.dataSource.mysql.user: root
-      # quartz 连接的数据库的密码
-      org.quartz.dataSource.mysql.password: 180236
-      # quartz 连接池中最大连接数
-      org.quartz.dataSource.mysql.maxConnections: 10
-      org.quartz.dataSource.mysql.validationQuery: select 'x'
 
 ########## mybatis-plus config ====================
 mybatis-plus:
