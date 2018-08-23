@@ -67,10 +67,10 @@ spring:
       url: jdbc:mysql://123.56.6.129:3306/quartz?useUnicode=true&characterEncoding=utf8&useSSL=false
       username: root
       password: 180236
-    job-store-type: jdbc
-    jdbc:
-      schema: classpath:quartz/schema/tables_mysql_innodb.sql
-      initialize-schema: embedded
+    #    job-store-type: jdbc
+    #    jdbc:
+    #      schema: classpath:quartz/schema/tables_mysql_innodb.sql
+    #      initialize-schema: always
     properties:
       # 调度器实例名称
       org.quartz.scheduler.instanceName: MyClusteredScheduler
