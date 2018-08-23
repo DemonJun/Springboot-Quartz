@@ -4,7 +4,7 @@ spring:
   ########## datasource config ====================
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://123.56.6.129:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 180236
     driver-class-name: com.mysql.jdbc.Driver
@@ -63,6 +63,10 @@ spring:
     database: 0
   ########## quartz config ====================
   quartz:
+    datasource:
+      url: jdbc:mysql://123.56.6.129:3306/quartz?useUnicode=true&characterEncoding=utf8&useSSL=false
+      username: root
+      password: 180236
     job-store-type: jdbc
     jdbc:
       schema: classpath:quartz/schema/tables_mysql_innodb.sql
