@@ -19,7 +19,7 @@ public class QuartzApplicationTests {
     private SchedulerFactoryBean schedulerFactoryBean;
 
     @Test
-    public void contextLoads() {
+    public void startJob() {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         try {
             // 1、创建一个JobDetail实例，指定Quartz
