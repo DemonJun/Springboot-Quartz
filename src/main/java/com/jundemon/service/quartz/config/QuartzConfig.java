@@ -2,6 +2,7 @@ package com.jundemon.service.quartz.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import lombok.Data;
+import org.quartz.Scheduler;
 import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +29,7 @@ public class QuartzConfig {
     private String username;
     private String password;
 
-    @Bean
+    @Bean(name = "schedulerFactoryBean")
     public SchedulerFactoryBean schedulerFactoryBean(QuartzProperties quartzProperties) {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
         DruidDataSource druidDataSource = new DruidDataSource();
@@ -42,5 +43,11 @@ public class QuartzConfig {
 
         return factory;
     }
+
+    @Bean(name = "Scheduler")
+    public Scheduler scheduler(SchedulerFactoryBean schedulerFactoryBean) {
+        return schedulerFactoryBean.getScheduler();
+    }
+
 
 }

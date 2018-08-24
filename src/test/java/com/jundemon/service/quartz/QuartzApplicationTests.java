@@ -1,5 +1,6 @@
 package com.jundemon.service.quartz;
 
+import com.jundemon.service.quartz.scheduler.job.TestJob;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quartz.*;
@@ -22,18 +23,16 @@ public class QuartzApplicationTests {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         try {
             // 1、创建一个JobDetail实例，指定Quartz
-            JobDetail jobDetail = JobBuilder.newJob(MyJob.class)
+            JobDetail jobDetail = JobBuilder.newJob(TestJob.class)
                     // 任务执行类
-                    .withIdentity("job2_1", "jGroup2")
+                    .withIdentity("jobTest_1", "jTestGroup")
                     // 任务名，任务组
                     .build();
             // 2、创建Trigger
-            SimpleScheduleBuilder builder = SimpleScheduleBuilder
-                    // 设置执行次数
-                    .repeatSecondlyForTotalCount(10);
+            SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.repeatSecondlyForever(1);
             Trigger trigger = TriggerBuilder.newTrigger()
-                    .withIdentity("trigger2_1", "tGroup2").startNow()
-                    .withSchedule(builder).build();
+                    .withIdentity("triggerTest_1", "tTestGroup").startNow()
+                    .withSchedule(scheduleBuilder).build();
             // 3、创建Scheduler
             scheduler.start();
             // 4、调度执行
@@ -74,18 +73,14 @@ public class QuartzApplicationTests {
 
             }
             scheduler.start();
+            try {
+                Thread.sleep(600000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } catch (Exception e) {
             e.printStackTrace();
 
-        }
-    }
-
-
-    class MyJob implements Job {
-
-        @Override
-        public void execute(JobExecutionContext jobExecutionContext) {
-            System.out.println("1111111111111111111111111111111");
         }
     }
 }
